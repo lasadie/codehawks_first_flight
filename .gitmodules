@@ -2,5 +2,7 @@
     path = 1:PasswordStore/2023-10-PasswordStore
     url = https://github.com/Cyfrin/2023-10-PasswordStore
 
-
+[submodule "2:PuppyRaffle/2023-10-Puppy-Raffle"]
+    path = 2:PuppyRaffle/2023-10-Puppy-Raffle
+    url = https://github.com/Cyfrin/2023-10-Puppy-Raffle
 

@@ -9,3 +9,7 @@
 [submodule "3:ThunderLoan/2023-11-Thunder-Loan"]
     path = 3:ThunderLoan/2023-11-Thunder-Loan
     url = https://github.com/Cyfrin/2023-11-Thunder-Loan
+
+[submodule "21:KittyFi/2024-08-kitty-fi"]
+path = 21:KittyFi/2024-08-kitty-fi
+url = https://github.com/Cyfrin/2024-08-kitty-fi

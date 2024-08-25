@@ -6,3 +6,6 @@
     path = 2:PuppyRaffle/2023-10-Puppy-Raffle
     url = https://github.com/Cyfrin/2023-10-Puppy-Raffle
 
+[submodule "3:ThunderLoan/2023-11-Thunder-Loan"]
+    path = 3:ThunderLoan/2023-11-Thunder-Loan
+    url = https://github.com/Cyfrin/2023-11-Thunder-Loan

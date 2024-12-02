@@ -9,7 +9,7 @@
     - Medium: 1  
     [M-01: `meownufactureKittyVault()` function missing vault limit (20) constraint check](#med-01)
     - Low: 1  
-    [L-01: Various core functions missing emit event](#Low-01)
+    [L-01: Various core functions missing emit event](#low-01)
     - Gas: 1  
     [G-01: `whiskdrawMeowllateral()` transfer before checking, resulting in gas wastage when revert](#gas-01)
      
@@ -153,7 +153,7 @@ function meownufactureKittyVault(address _token, address _priceFeed) external on
     }
 ```
 
-## <a id="low-02"></a>L-01: Various core functions missing emit event
+## <a id="low-01"></a>L-01: Various core functions missing emit event
 
 ### Summary
 Various core functions such as `depawsitMeowllateral()`, `whiskdrawMeowllateral()`, `meowintKittyCoin()`, `burnKittyCoin()`, `purrgeBadPawsition()` and `meownufactureKittyVault()` is missing emit event. This does not provide enough transparency and there will be difficulties during security debugging and auditing.

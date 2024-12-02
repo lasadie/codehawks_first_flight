@@ -2,12 +2,11 @@
 - Scope
     - TrickOrTreat.sol
 - Findings
-    - High: 0  
-    [H-01: ](#high-01)
-    - Medium: 3  
-    [M-01: `setTreatCost()` will always revert if a Treat was added with 0 cost](#med-01)  
-    [M-02: `transfer()` is deprecated and should not be used to transfer Ether](#med-02)  
-    [M-03: `random` variable in `trickOrTreat()` uses block.timestamp and block.prevrandao, which are not good source of randomness](#med-03)  
+    - Medium: 2  
+    (Invalid) [M-01: `setTreatCost()` will always revert if a Treat was added with 0 cost](#med-01)  
+    (Invalid) [M-02: `random` variable in `trickOrTreat()` uses block.timestamp and block.prevrandao, which are not good source of randomness](#med-02)  
+    - Low: 1  
+    (Valid) [L-01: `transfer()` is deprecated and should not be used to transfer Ether](#low-01) 
     
 - Tools
 		- [Foundry](https://github.com/foundry-rs/foundry)
@@ -63,7 +62,35 @@ function setTreatCost(string memory _treatName, uint256 _cost) public onlyOwner 
 }
 ```
 
-## <a id="med-02"></a>M-02: `transfer()` is deprecated and should not be used to transfer Ether
+
+## <a id="med-02"></a>M-02: `random` variable in `trickOrTreat()` uses block.timestamp and block.prevrandao, which are not good source of randomness
+
+### Summary
+The `random` variable in `trickOrTreat()` is not truly random as the various parameters such as block.timestamp and block.prevrandao not good source of randomness and can be manipulated by miner/validators. Where miner/validators can allow specific address address to buy NFT at half price.
+
+### Vulnerability Details
+The `random` variable in `trickOrTreat()` is not truly random as the various parameters are predictable or fixed:
+1. block.timestamp: The timestamp is predictable
+2. msg.sender: This value is fixed
+3. nextTokenId: The value of this variable is fixed for a period of time until the next NFT mint happens
+4. block.prevrandao: The value of prevrandao will remain the same until a new block is created in the blockchain
+```solidity
+function trickOrTreat(string memory _treatName) public payable nonReentrant {
+        ...
+        // Generate a pseudo-random number between 1 and 1000
+->        uint256 random = uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender, nextTokenId, block.prevrandao))) % 1000 + 1;
+        ...
+}
+```
+
+### Impact/Proof of Concept
+Miner/validators can manipulate the block.prevrandao and block.timestamp to allow specific address to buy NFT at half price.
+
+### Recommendations
+Change to other randomness methods, such as using Chainlink VRF.
+
+
+## <a id="low-01"></a>L-01: `transfer()` is deprecated and should not be used to transfer Ether
 
 ### Summary
 In `withdrawFees()`, transfer() is used to send ether to the owner. This is not recommended as transfer() sends a fixed gas of 2300 and is deprecated, which may not be sufficient in the future if the EVM gas costs changes. This will cause the funds in the contract to be stucked.
@@ -93,29 +120,3 @@ function withdrawFees() public onlyOwner {
         emit FeeWithdrawn(owner(), balance);
     }
 ```
-
-## <a id="med-03"></a>M-03: `random` variable in `trickOrTreat()` uses block.timestamp and block.prevrandao, which are not good source of randomness
-
-### Summary
-The `random` variable in `trickOrTreat()` is not truly random as the various parameters such as block.timestamp and block.prevrandao not good source of randomness and can be manipulated by miner/validators. Where miner/validators can allow specific address address to buy NFT at half price.
-
-### Vulnerability Details
-The `random` variable in `trickOrTreat()` is not truly random as the various parameters are predictable or fixed:
-1. block.timestamp: The timestamp is predictable
-2. msg.sender: This value is fixed
-3. nextTokenId: The value of this variable is fixed for a period of time until the next NFT mint happens
-4. block.prevrandao: The value of prevrandao will remain the same until a new block is created in the blockchain
-```solidity
-function trickOrTreat(string memory _treatName) public payable nonReentrant {
-        ...
-        // Generate a pseudo-random number between 1 and 1000
-->        uint256 random = uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender, nextTokenId, block.prevrandao))) % 1000 + 1;
-        ...
-}
-```
-
-### Impact/Proof of Concept
-Miner/validators can manipulate the block.prevrandao and block.timestamp to allow specific address to buy NFT at half price.
-
-### Recommendations
-Change to other randomness methods, such as using Chainlink VRF.

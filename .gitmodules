@@ -11,5 +11,13 @@
     url = https://github.com/Cyfrin/2023-11-Thunder-Loan
 
 [submodule "21:KittyFi/2024-08-kitty-fi"]
-path = 21:KittyFi/2024-08-kitty-fi
-url = https://github.com/Cyfrin/2024-08-kitty-fi
+    path = 21:KittyFi/2024-08-kitty-fi
+    url = https://github.com/Cyfrin/2024-08-kitty-fi
+
+[submodule "27:TrickOrTreat/2024-10-trick-or-treat"]
+    path = 27:TrickOrTreat/2024-10-trick-or-treat
+    url = https://github.com/Cyfrin/2024-10-trick-or-treat
+
+[submodule "29:TwentyOne/2024-11-twentyone"]
+    path = 29:TwentyOne/2024-11-twentyone
+    url = https://github.com/Cyfrin/2024-11-TwentyOne

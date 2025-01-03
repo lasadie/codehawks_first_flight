@@ -15,3 +15,6 @@ docs/
 .DS_Store
 
 broadcast
+
+# Specific files
+/home/user/codehawks_first_flight/31:ChristmasDinner/notepad.md

@@ -21,3 +21,7 @@
 [submodule "29:TwentyOne/2024-11-twentyone"]
     path = 29:TwentyOne/2024-11-twentyone
     url = https://github.com/Cyfrin/2024-11-TwentyOne
+
+[submodule "31:ChristmasDinner/2024-12-christmas-dinner"]
+    path = 31:ChristmasDinner/2024-12-christmas-dinner
+    url = https://github.com/Cyfrin/2024-12-christmas-dinner

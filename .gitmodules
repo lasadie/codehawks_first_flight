@@ -25,3 +25,7 @@
 [submodule "31:ChristmasDinner/2024-12-christmas-dinner"]
     path = 31:ChristmasDinner/2024-12-christmas-dinner
     url = https://github.com/Cyfrin/2024-12-christmas-dinner
+
+[submodule "35:InheritableSmartContractWallet/2025-03-inheritable-smart-contract-wallet"]
+    path = 35:InheritableSmartContractWallet/2025-03-inheritable-smart-contract-wallet
+    url = https://github.com/CodeHawks-Contests/2025-03-inheritable-smart-contract-wallet

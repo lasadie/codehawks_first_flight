@@ -29,3 +29,7 @@
 [submodule "35:InheritableSmartContractWallet/2025-03-inheritable-smart-contract-wallet"]
     path = 35:InheritableSmartContractWallet/2025-03-inheritable-smart-contract-wallet
     url = https://github.com/CodeHawks-Contests/2025-03-inheritable-smart-contract-wallet
+
+[submodule "48:BidBeasts/2025-09-bid-beasts"]
+    path = 48:BidBeasts/2025-09-bid-beasts
+    url = https://github.com/CodeHawks-Contests/2025-09-bid-beasts
